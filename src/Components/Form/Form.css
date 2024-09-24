@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 25px;
+  margin: auto;
+  /* margin-top: 10rem; */
+  padding-bottom: 1rem;
+  width: 600px;
+  max-width: 100%; /* Ensure it doesn’t overflow on smaller screens */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better aesthetics */
+  max-height: calc(100vh - 4rem); /* Prevents overflow, ensures space on top and bottom */
+
+  
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+h1 {
+  color:  #ad5593;
+  font-size: 3em;
+  font-weight: 700px;
+  margin: 0;
+}
+
+.underline {
+  height: 0.5em;
+  width: 100px;
+  background-color:  #ad5593;
+  border-radius: 5px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 4rem 4rem 1rem;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 400px;
+  height: 80px;
+  background-color: rgb(232, 232, 232);
+  border-radius: 5px;
+}
+
+.input img {
+  margin: 0 30px;
+}
+
+.input input {
+  height: 50px;
+  /* width: 400px; */
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "Poppins", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.forgot-password {
+  color: grey;
+
+}
+.forgot-password span {
+  color: rgb(93, 93, 165);
+  text-decoration: underline;
+}
+.submit-container {
+  display: flex;
+  gap: 3rem;
+  margin-block: 4rem;
+}

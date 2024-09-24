@@ -1,0 +1,27 @@
+button {
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-family: "Poppins", system-ui;
+  font-weight: 700;
+  font-style: normal;
+  cursor: pointer; /* Shows clickable pointer */
+}
+
+.active-button {
+  background-color: #ad5593;
+  color: white;
+  border: none;
+}
+
+.inactive-button {
+  background-color: white;
+  color: #ad5593;
+  border: 4px solid #bf77a9;
+}
+
+button:disabled {
+  opacity: 0.6; /* Visually indicate that the button is disabled */
+  cursor: not-allowed;
+}
