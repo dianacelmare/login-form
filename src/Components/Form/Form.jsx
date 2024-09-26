@@ -25,6 +25,7 @@ const Form = () => {
     setPassword("");
   };
 
+
   //to see the full list in real time because setState is asynchronous, meaning that users still holds its previous value when you log it immediately after calling setUsers.
   useEffect(() => {
     console.log("Updated Users List:", newUsers);
@@ -36,16 +37,18 @@ const Form = () => {
       if (existingUser) {
         alert("User already exists. Please sign in");
       } else {
+
         const newUser = {
           name: name,
           email: email,
           password: password,
         };
-
-        setNewUsers([...newUsers, newUsers]);
+      
+        // setNewUsers([...newUsers, newUser]);
+        setNewUsers((prevUsers) => [...prevUsers, newUser])
         console.log("New User added:", newUser); // This will log the latest user added
 
-        console.log("Users List:", newUsers); // This will log the entire users array
+        console.log("Users List:", newUsers); // This will log the users array withot the last one bc setState is asynchronous
 
         alert("User registered succesfully!");
       }
@@ -70,11 +73,11 @@ const Form = () => {
     console.log("Users List:", newUsers); // This will log the entire users array
   };
 
-  const handleSubmit = () => {
-    if (action === "Sign In") {
-      resetState();
-    } else resetState();
-  };
+  // const handleSubmit = () => {
+  //   if (action === "Sign In") {
+  //     resetState();
+  //   } else resetState();
+  // };
 
   const handleSignIn = () => {
     if (action === "Sign In") {
@@ -99,7 +102,7 @@ const Form = () => {
         <h1>{action}</h1>
         <div className="underline"></div>
       </div>
-      <form className="inputs" onSubmit={handleSubmit}>
+      <form className="inputs" >
         {action === "Sign In" ? (
           <></>
         ) : (
