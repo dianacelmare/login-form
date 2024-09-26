@@ -25,11 +25,18 @@ const Form = () => {
     setPassword("");
   };
 
-
   //to see the full list in real time because setState is asynchronous, meaning that users still holds its previous value when you log it immediately after calling setUsers.
   useEffect(() => {
     console.log("Updated Users List:", newUsers);
   }, [newUsers]); // This will trigger each time users state changes
+
+  // Load users from localStorage when the component mounts
+  useEffect(() => {
+    const storedUsers = localStorage.getItem("users");
+    if (storedUsers) {
+      setNewUsers(JSON.parse(storedUsers));
+    }
+  }, []); // This runs once when the component mounts
 
   const addUser = () => {
     if (action === "Sign Up") {
@@ -37,15 +44,19 @@ const Form = () => {
       if (existingUser) {
         alert("User already exists. Please sign in");
       } else {
-
         const newUser = {
           name: name,
           email: email,
           password: password,
         };
-      
-        // setNewUsers([...newUsers, newUser]);
-        setNewUsers((prevUsers) => [...prevUsers, newUser])
+
+        const updatedUsers = [...newUsers, newUser];
+        setNewUsers(updatedUsers);
+        // setNewUsers((prevUsers) => [...prevUsers, newUser])
+
+        // Save updated users to localStorage
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+
         console.log("New User added:", newUser); // This will log the latest user added
 
         console.log("Users List:", newUsers); // This will log the users array withot the last one bc setState is asynchronous
@@ -57,6 +68,7 @@ const Form = () => {
     // Aici poți trimite `newUser` către server sau să-l gestionezi cum ai nevoie
     resetState();
   };
+  console.log(localStorage);
 
   // Funcția de Sign In - verificăm dacă utilizatorul există
   const signInUser = () => {
@@ -102,7 +114,7 @@ const Form = () => {
         <h1>{action}</h1>
         <div className="underline"></div>
       </div>
-      <form className="inputs" >
+      <form className="inputs">
         {action === "Sign In" ? (
           <></>
         ) : (
